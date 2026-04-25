@@ -32,7 +32,8 @@ pub fn serveMetrics(allocator: std.mem.Allocator, req: *std.http.Server.Request,
         \\# HELP sensor_pressure Current atmospheric pressure in hPa.
         \\# TYPE sensor_pressure gauge
         \\sensor_pressure {d:.4}
-        \\# EOF\n
+        \\# EOF
+        \\
     , .{ s.temperature, s.humidity, s.pressure });
 
     try req.respond(body, .{ .extra_headers = &.{.{
